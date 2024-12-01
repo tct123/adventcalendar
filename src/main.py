@@ -2,25 +2,46 @@ import flet as ft
 
 
 def main(page: ft.Page):
-    counter = ft.Text("0", size=50, data=0)
-
-    def increment_click(e):
-        counter.data += 1
-        counter.value = str(counter.data)
-        counter.update()
-
-    page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.Icons.ADD, on_click=increment_click
-    )
-    page.add(
-        ft.SafeArea(
-            ft.Container(
-                counter,
-                alignment=ft.alignment.center,
-            ),
-            expand=True,
+    page.title = "Adventcalendar"
+    page.adaptive = True
+    buttons = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+    ]
+    for row in buttons:
+        row_controls = []
+        btn = ft.Column(controls=[ft.Text(row)], expand=1)
+        row_controls.append(btn)
+        page.add(
+            ft.SafeArea(
+                ft.Row(
+                    controls=row_controls,
+                    expand=1,
+                )
+            )
         )
-    )
 
 
 ft.app(main)
